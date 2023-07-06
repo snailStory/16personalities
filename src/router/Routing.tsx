@@ -1,7 +1,7 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import Home from '../pages/Home';
-import TypeTest from '../pages/typeTest';
-import TypeAnalysis from '../pages/typeAnalysis';
+import TypeTest from '../pages/TypeTest';
+import TypeAnalysis from '../pages/TypeAnalysis';
 
 function Routing() {
   return (
