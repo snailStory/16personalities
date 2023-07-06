@@ -1,15 +1,13 @@
-
+import { RecoilRoot } from "recoil";
 
 
 function App() {
-
   return (
-    <>
-      <div>
-        <div>hi</div>
-      </div>
-    </>
+    <RecoilRoot>
+      
+    </RecoilRoot>
   )
+
 }
 
-export default App
+export default App;
