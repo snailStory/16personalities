@@ -21,7 +21,7 @@ const Header = () => {
       <a href="/">
         <IconSpan>
           <img src="src/assets/images/snail.png" alt="" width={"50px"} />
-          snail story
+          Snail Story
         </IconSpan>
       </a>
       <nav>
@@ -50,6 +50,9 @@ const MainHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  position: fixed;
+  background-color: #030303;
+  top: 0;
 `;
 
 const IconSpan = styled.span`
