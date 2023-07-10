@@ -4,7 +4,8 @@ import App from './App.tsx';
 import './index.css';
 import Routing from './router/Routing.tsx';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <Routing />
     <App />
