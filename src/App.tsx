@@ -1,11 +1,10 @@
 /** @jsxImportSource @emotion/react */
-import { RecoilRoot } from 'recoil';
-import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
-import { css } from '@emotion/react';
-import team from 'src/assets/svgs/team.svg';
-import { Outlet } from 'react-router-dom';
-
+import { RecoilRoot } from "recoil";
+import Header from "src/components/Header";
+import Footer from "src/components/Footer";
+import { css } from "@emotion/react";
+import team from "src/assets/svgs/team.svg";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
       <Header />
       <main
         css={css`
-          margin-top: 50px;
           background-color: #33a474;
           position: relative;
           padding-bottom: 30px;
@@ -21,7 +19,7 @@ function App() {
           &:after {
             position: absolute;
             left: 0;
-            content: '';
+            content: "";
             width: 100%;
             display: block;
             background-color: #33a474;

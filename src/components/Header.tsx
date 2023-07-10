@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
-  const navList = ['성격 유형 검사', '유형별 성격'];
+  const navList = ["성격 유형 검사", "유형별 성격"];
 
   const ItemHoverStyle = css`
     border-top: solid 2px #646cff;
@@ -21,7 +21,7 @@ const Header = () => {
     <MainHeader>
       <a href="/">
         <IconSpan>
-          <img src="src/assets/images/snail.png" alt="" width={'50px'} />
+          <img src="src/assets/images/snail.png" alt="" width={"50px"} />
           Snail Story
         </IconSpan>
       </a>
@@ -55,6 +55,7 @@ const MainHeader = styled.div`
   padding: 0 20px;
   position: fixed;
   background-color: #030303;
+  z-index: 1;
   top: 0;
 `;
 
