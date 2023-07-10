@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import { css } from "@emotion/react";
+import { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
-  const navList = ["성격 유형 검사", "유형별 성격"];
+  const navList = ['성격 유형 검사', '유형별 성격'];
 
   const ItemHoverStyle = css`
     border-top: solid 2px #646cff;
@@ -20,7 +21,7 @@ const Header = () => {
     <MainHeader>
       <a href="/">
         <IconSpan>
-          <img src="src/assets/images/snail.png" alt="" width={"50px"} />
+          <img src="src/assets/images/snail.png" alt="" width={'50px'} />
           Snail Story
         </IconSpan>
       </a>
@@ -32,7 +33,9 @@ const Header = () => {
                 key={index}
                 css={selectedTab === index && ItemHoverStyle}
               >
-                <div onClick={() => setSelectedTab(index)}>{item}</div>
+                <Link to="/typeTest" onClick={() => setSelectedTab(index)}>
+                  {item}
+                </Link>
               </ListItem>
             );
           })}
