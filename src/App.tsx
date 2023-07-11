@@ -1,41 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { RecoilRoot } from "recoil";
-import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import { css } from "@emotion/react";
 import team from "src/assets/svgs/team.svg";
 import { Outlet } from "react-router-dom";
+import MainLayout from "./components/MainLayout";
 
 function App() {
   return (
     <RecoilRoot>
-      <Header />
-      <main
-        css={css`
-          background-color: #33a474;
-          position: relative;
-          padding-bottom: 30px;
-
-          &:after {
-            position: absolute;
-            left: 0;
-            content: "";
-            width: 100%;
-            display: block;
-            background-color: #33a474;
-            clip-path: polygon(
-              0 0,
-              100% 0,
-              100% calc(100% - 20px),
-              81% 100%,
-              42% calc(100% - 30px),
-              22% 100%,
-              0 calc(100% - 20px)
-            );
-            height: 60px;
-          }
-        `}
-      >
+      <MainLayout>
         <div
           css={css`
             padding: 30px 20px;
@@ -57,11 +31,9 @@ function App() {
           <div>Nine Hills Road, Cambridge, CB2 1GE, United Kingdom</div>
           <div>Registered in England and Wales, #8646330</div>
         </div>
-      </main>
-      <img src={team} alt="" />
+      </MainLayout>
+      <img src={team} alt="team picture" />
       <Outlet />
-
-      <Footer />
     </RecoilRoot>
   );
 }
