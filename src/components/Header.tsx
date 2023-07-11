@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
-  const navList = ["성격 유형 검사", "유형별 성격"];
+  const navList = [
+    { name: "성격 유형 검사", path: "/typeTest" },
+    { name: "유형별 성격", path: "/typeAnalysis" },
+  ];
 
   const ItemHoverStyle = css`
     border-top: solid 2px #646cff;
@@ -19,24 +22,25 @@ const Header = () => {
 
   return (
     <MainHeader>
-      <a href="/">
+      <Link to="/" onClick={() => setSelectedTab(null)}>
         <IconSpan>
           <img src="src/assets/images/snail.png" alt="" width={"50px"} />
           Snail Story
         </IconSpan>
-      </a>
+      </Link>
       <nav>
         <UnOrderedList>
           {navList.map((item, index) => {
             return (
-              <ListItem
+              <Link
+                to={item.path}
                 key={index}
-                css={selectedTab === index && ItemHoverStyle}
+                onClick={() => setSelectedTab(index)}
               >
-                <Link to="/typeTest" onClick={() => setSelectedTab(index)}>
-                  {item}
-                </Link>
-              </ListItem>
+                <ListItem css={selectedTab === index && ItemHoverStyle}>
+                  {item.name}
+                </ListItem>
+              </Link>
             );
           })}
         </UnOrderedList>
@@ -55,7 +59,7 @@ const MainHeader = styled.div`
   padding: 0 20px;
   position: fixed;
   background-color: #030303;
-  z-index: 1;
+  z-index: 9999;
   top: 0;
 `;
 
@@ -74,7 +78,7 @@ const UnOrderedList = styled.ul`
 
 const ListItem = styled.li`
   cursor: pointer;
-  height: 50px;
+  height: 60px;
   line-height: 50px;
   &:hover {
     border-top: solid 2px #646cff;
