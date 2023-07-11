@@ -61,8 +61,6 @@ function App() {
       </main>
       <img src={team} alt="" />
       <Outlet />
-
-      <Footer />
     </RecoilRoot>
   );
 }
