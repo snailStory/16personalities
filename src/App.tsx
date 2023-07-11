@@ -4,7 +4,6 @@ import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import { css } from "@emotion/react";
 import team from "src/assets/svgs/team.svg";
-import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -59,7 +58,7 @@ function App() {
         </div>
       </main>
       <img src={team} alt="" />
-      <Outlet />
+      
 
       <Footer />
     </RecoilRoot>
