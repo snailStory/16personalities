@@ -1,21 +1,35 @@
 import { css } from '@emotion/react';
-interface Props  {
-    title: string
-    selectItems: string[]
+import { Mbti, resultObj } from 'src/pages/TypeTest';
+
+interface Props {
+  title: string;
+  selectItems: { [index in keyof typeof resultObj]: string };
+  getResult: (mbti: Mbti) => void;
 }
-const Quiz = ({title, selectItems}:Props) => {
+const Quiz = ({ title, selectItems, getResult }: Props) => {
+  const getItemsKeys = () => {
+    const resultArr: Mbti[] = [];
+    for (const key in selectItems) {
+      resultArr.push(key as Mbti);
+    }
+    return resultArr;
+  };
   return (
     <>
       <div css={TitleContainer}>{title}</div>
-      <div css={SelectBoxContainer}>
-        {selectItems.map((item, index) => {
+      <ul css={SelectBoxContainer}>
+        {getItemsKeys().map((item, index) => {
           return (
-            <div key={index} css={SelectBoxItem}>
-              {item}
-            </div>
+            <button
+              key={index}
+              css={SelectBoxItem}
+              onClick={() => getResult(item)}
+            >
+              <li>{selectItems[item]}</li>
+            </button>
           );
         })}
-      </div>
+      </ul>
     </>
   );
 };
@@ -28,6 +42,7 @@ const SelectBoxContainer = css`
   display: flex;
   margin-top: 20px;
   justify-content: center;
+  gap: 20px;
 `;
 const SelectBoxItem = css`
   border: 1px solid #33a474;

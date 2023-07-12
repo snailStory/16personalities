@@ -1,16 +1,52 @@
-import MainLayout from "../components/MainLayout";
-import { css } from "@emotion/react";
-import { Clock, Slash, UserCheck } from "src/assets/svgs";
+import { useState, useEffect } from 'react';
+import MainLayout from '../components/MainLayout';
+import { css } from '@emotion/react';
+import { Clock, Slash, UserCheck } from 'src/assets/svgs';
 
-import Quiz from "src/components/Quiz";
+import Quiz from 'src/components/Quiz';
+import QnA from 'src/config/quiz.json';
+
+export const resultObj = {
+  I: 0,
+  E: 0,
+  N: 0,
+  S: 0,
+  F: 0,
+  T: 0,
+  P: 0,
+  J: 0,
+};
+
+export type Mbti = keyof typeof resultObj;
 
 function TypeTest() {
+  const QnAObj = JSON.parse(JSON.stringify(QnA));
+  const [result, setResult] = useState(resultObj);
+  const [page, setPage] = useState(0)
+  const { question, answer } = QnAObj[page] ?? {};
+
+  const getResult = (mbti: Mbti) => {
+    setResult((prev) => {
+      const count = prev[mbti] + 1;
+      return { ...prev, [mbti]: count };
+    });
+    setPage(prev => prev + 1)
+  };
+
+  useEffect(() => {
+    console.log(result);
+  }, [result]);
+
+  
+
+  
+
   const guideTextStyle = css`
     text-align: center;
     color: #555;
     font-weight: 500;
   `;
-  const guideArr = ["clock", "user", "slash"];
+  const guideArr = ['clock', 'user', 'slash'];
   const guide = (text: string) => {
     const result = {
       clock: {
@@ -40,70 +76,85 @@ function TypeTest() {
     return result;
   };
   return (
-    <MainLayout>
+    <div
+      css={css`
+        display: flex;
+        flex-direction: column;
+        gap: 180px;
+      `}
+    >
+      <MainLayout>
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 60px 20px;
+            position: relative;
+          `}
+        >
+          <h1
+            css={css`
+              text-align: center;
+            `}
+          >
+            무료 성격유형검사
+          </h1>
+          <div
+            css={css`
+              font-weight: 500;
+              font-size: 20px;
+            `}
+          >
+            NERIS Type Explorer&reg;
+          </div>
+          <div
+            css={css`
+              position: absolute;
+              bottom: -130px;
+              display: flex;
+              justify-content: center;
+              gap: 20px;
+              z-index: 2;
+            `}
+          >
+            {guideArr.map((item, index) => {
+              const guideItem = guide(item);
+              return (
+                <div
+                  key={index}
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    border-radius: 8px;
+                    width: 260px;
+                    height: 150px;
+                    padding: 18px 0;
+                    gap: 10px;
+                  `}
+                >
+                  {guideItem?.icon}
+                  {guideItem?.text}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </MainLayout>
       <div
         css={css`
           display: flex;
           flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 20px;
-          padding: 60px 20px;
-          position: relative;
+          gap: 50px;
         `}
       >
-        <h1
-          css={css`
-            text-align: center;
-          `}
-        >
-          무료 성격유형검사
-        </h1>
-        <div
-          css={css`
-            font-weight: 500;
-            font-size: 20px;
-          `}
-        >
-          NERIS Type Explorer&reg;
-        </div>
-        <div
-          css={css`
-            position: absolute;
-            bottom: -130px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 2;
-          `}
-        >
-          {guideArr.map((item, index) => {
-            const guideItem = guide(item);
-            return (
-              <div
-                key={index}
-                css={css`
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  background-color: rgba(255, 255, 255, 0.5);
-                  border-radius: 8px;
-                  width: 260px;
-                  height: 150px;
-                  padding: 18px 0;
-                  gap: 10px;
-                `}
-              >
-                {guideItem?.icon}
-                {guideItem?.text}
-              </div>
-            );
-          })}
-        </div>
+        <Quiz title={question} selectItems={answer} getResult={getResult} />
       </div>
-      <Quiz title='고르시오' selectItems = {['집돌이','밖돌이']} />
-    </MainLayout>
-
+    </div>
   );
 }
 
