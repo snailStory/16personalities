@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
-import MainLayout from '../components/MainLayout';
-import { css } from '@emotion/react';
-import { Clock, Slash, UserCheck } from 'src/assets/svgs';
+import { useState, useEffect, useRef } from "react";
+import MainLayout from "../components/MainLayout";
+import { css } from "@emotion/react";
+import { Clock, Slash, UserCheck } from "src/assets/svgs";
 
-import Quiz from 'src/components/Quiz';
-import QnA from 'src/config/quiz.json';
+import Quiz from "src/components/Quiz";
+import QnA from "src/config/quiz.json";
+import { flushSync } from "react-dom";
 
 export const resultObj = {
   I: 0,
@@ -20,33 +21,48 @@ export const resultObj = {
 export type Mbti = keyof typeof resultObj;
 
 function TypeTest() {
+  const prevResult = useRef<string[]>([]);
   const QnAObj = JSON.parse(JSON.stringify(QnA));
   const [result, setResult] = useState(resultObj);
-  const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
   const { question, answer } = QnAObj[page] ?? {};
 
   const getResult = (mbti: Mbti) => {
+    prevResult.current.push(mbti);
+    console.log(prevResult);
     setResult((prev) => {
       const count = prev[mbti] + 1;
       return { ...prev, [mbti]: count };
     });
-    setPage(prev => prev + 1)
+    setPage((prev) => prev + 1);
+  };
+
+  const handleBackButtonClick = () => {
+    if (page === 0) {
+      return;
+    }
+    flushSync(() => {
+      setResult((prev) => {
+        const key = prevResult.current[page - 1];
+        return { ...prev, [key]: prev[key] - 1 };
+      });
+
+      setPage((prev) => prev - 1);
+    });
+
+    prevResult.current.pop();
   };
 
   useEffect(() => {
     console.log(result);
   }, [result]);
 
-  
-
-  
-
   const guideTextStyle = css`
     text-align: center;
     color: #555;
     font-weight: 500;
   `;
-  const guideArr = ['clock', 'user', 'slash'];
+  const guideArr = ["clock", "user", "slash"];
   const guide = (text: string) => {
     const result = {
       clock: {
@@ -153,6 +169,9 @@ function TypeTest() {
         `}
       >
         <Quiz title={question} selectItems={answer} getResult={getResult} />
+        {page !== 0 && (
+          <button onClick={handleBackButtonClick}>뒤로가기</button>
+        )}
       </div>
     </div>
   );
