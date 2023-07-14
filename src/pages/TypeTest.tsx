@@ -26,7 +26,6 @@ function TypeTest() {
   const [result, setResult] = useState(resultObj);
   const [page, setPage] = useState(0);
   const { question, answer } = QnAObj[page] ?? {};
-  const [resultMbti, setResultMbti] = useState<string>("");
 
   const getResult = (mbti: Mbti) => {
     console.log(page);
