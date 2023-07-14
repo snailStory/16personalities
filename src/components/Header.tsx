@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
+  const location = useLocation();
+  const { pathname } = location;
+  console.log(pathname);
   const navList = [
     { name: "성격 유형 검사", path: "/typeTest" },
     { name: "유형별 성격", path: "/typeAnalysis" },
@@ -37,7 +41,7 @@ const Header = () => {
                 key={index}
                 onClick={() => setSelectedTab(index)}
               >
-                <ListItem css={selectedTab === index && ItemHoverStyle}>
+                <ListItem css={pathname === item.path && ItemHoverStyle}>
                   {item.name}
                 </ListItem>
               </Link>
