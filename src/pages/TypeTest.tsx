@@ -6,6 +6,8 @@ import { Clock, Slash, UserCheck } from "src/assets/svgs";
 import Quiz from "src/components/Quiz";
 import QnA from "src/config/quiz.json";
 import { flushSync } from "react-dom";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 export const resultObj = {
   I: 0,
@@ -26,6 +28,7 @@ function TypeTest() {
   const [result, setResult] = useState(resultObj);
   const [page, setPage] = useState(0);
   const { question, answer } = QnAObj[page] ?? {};
+  const navigate = useNavigate();
 
   const getResult = (mbti: Mbti) => {
     console.log(page);
@@ -66,7 +69,8 @@ function TypeTest() {
     const b = getMbtiResult({ S }, { N });
     const t = getMbtiResult({ F }, { T });
     const i = getMbtiResult({ J }, { P });
-    console.log(m + b + t + i);
+    const mbti = m + b + t + i;
+    navigate(`/typeAnalysis/${mbti}`);
   };
 
   useEffect(() => {
