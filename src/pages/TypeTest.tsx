@@ -26,10 +26,11 @@ function TypeTest() {
   const [result, setResult] = useState(resultObj);
   const [page, setPage] = useState(0);
   const { question, answer } = QnAObj[page] ?? {};
+  const [resultMbti, setResultMbti] = useState<string>("");
 
   const getResult = (mbti: Mbti) => {
+    console.log(page);
     prevResult.current.push(mbti);
-    console.log(prevResult);
     setResult((prev) => {
       const count = prev[mbti] + 1;
       return { ...prev, [mbti]: count };
@@ -51,6 +52,22 @@ function TypeTest() {
     });
 
     prevResult.current.pop();
+  };
+
+  const getMbtiResult = (key, key2) => {
+    const keyString = Object.keys(key)[0];
+    const keyString2 = Object.keys(key2)[0];
+    if (key[keyString] > key2[keyString2]) return `${keyString}`;
+    return `${keyString2}`;
+  };
+
+  const handleGetMbti = () => {
+    const { I, E, S, N, F, T, J, P } = result;
+    const m = getMbtiResult({ I }, { E });
+    const b = getMbtiResult({ S }, { N });
+    const t = getMbtiResult({ F }, { T });
+    const i = getMbtiResult({ J }, { P });
+    console.log(m + b + t + i);
   };
 
   useEffect(() => {
@@ -169,6 +186,7 @@ function TypeTest() {
         `}
       >
         <Quiz title={question} selectItems={answer} getResult={getResult} />
+        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
         {page !== 0 && (
           <button onClick={handleBackButtonClick}>뒤로가기</button>
         )}
