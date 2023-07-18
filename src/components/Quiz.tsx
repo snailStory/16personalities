@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
-import { Mbti, resultObj } from 'src/pages/TypeTest';
+import { css } from "@emotion/react";
+import { Mbti, resultObj } from "src/pages/TypeTest";
 
 interface Props {
   title: string;
@@ -19,13 +19,17 @@ const Quiz = ({ title, selectItems, getResult }: Props) => {
       <div css={TitleContainer}>{title}</div>
       <ul css={SelectBoxContainer}>
         {getItemsKeys().map((item, index) => {
+          const text = selectItems[item].split("/");
           return (
             <button
               key={index}
               css={SelectBoxItem}
               onClick={() => getResult(item)}
             >
-              <li>{selectItems[item]}</li>
+              <li>
+                <div>{text[0]}</div>
+                <div>{text[1]}</div>
+              </li>
             </button>
           );
         })}
