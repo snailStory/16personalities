@@ -29,7 +29,14 @@ const Header = () => {
       <Link to="/" onClick={() => setSelectedTab(null)}>
         <IconSpan>
           <img src="src/assets/images/snail.png" alt="" width={"50px"} />
-          Snail Story
+          <span
+            css={css`
+              font-size: 20px;
+              font-weight: 600;
+            `}
+          >
+            Snail Story
+          </span>
         </IconSpan>
       </Link>
       <nav>
@@ -77,7 +84,7 @@ const IconSpan = styled.span`
 
 const UnOrderedList = styled.ul`
   display: flex;
-  gap: 20px;
+  gap: 25px;
 `;
 
 const ListItem = styled.li`
