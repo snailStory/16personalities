@@ -117,6 +117,7 @@ function TypeTest() {
         display: flex;
         flex-direction: column;
         gap: 180px;
+        height: 700px;
       `}
     >
       <MainLayout>
@@ -189,7 +190,16 @@ function TypeTest() {
         `}
       >
         <Quiz title={question} selectItems={answer} getResult={getResult} />
-        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
+        {page === 12 && (
+          <button
+            onClick={handleGetMbti}
+            css={css`
+              height: 66px;
+            `}
+          >
+            결과보기
+          </button>
+        )}
         {page !== 0 && (
           <button onClick={handleBackButtonClick}>뒤로가기</button>
         )}
