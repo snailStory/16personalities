@@ -5,8 +5,8 @@ import { fontSizeState } from "../store/count";
 interface Props {
   props2: string;
 }
-const Practice2: FC<Props> = ({ props2 }) => {
-  const [count, setCount] = useRecoilState(fontSizeState);
+const Practice2: FC<Props> = ({  }) => {
+  const [count, ] = useRecoilState(fontSizeState);
 
   // router 는 stack 으로 구현되어있다
   // 후입 선출

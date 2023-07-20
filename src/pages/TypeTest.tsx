@@ -6,7 +6,6 @@ import { Clock, Slash, UserCheck } from "src/assets/svgs";
 import Quiz from "src/components/Quiz";
 import QnA from "src/config/quiz.json";
 import { flushSync } from "react-dom";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
 
 export const resultObj = {
@@ -56,7 +55,11 @@ function TypeTest() {
     prevResult.current.pop();
   };
 
-  const getMbtiResult = (key, key2) => {
+
+  interface KeyProp {
+    [index: string]: number
+  }
+  const getMbtiResult = (key: KeyProp, key2: KeyProp) => {
     const keyString = Object.keys(key)[0];
     const keyString2 = Object.keys(key2)[0];
     if (key[keyString] > key2[keyString2]) return `${keyString}`;

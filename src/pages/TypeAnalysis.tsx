@@ -19,6 +19,8 @@ import {
   ISTP,
 } from "src/assets/images/mbti";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const mbtis = {
   ENTP,
   INFP,
