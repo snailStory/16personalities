@@ -1,10 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { RecoilRoot } from 'recoil';
-import Header from 'src/components/Header';
-import Footer from 'src/components/Footer';
+
 import { css } from '@emotion/react';
 import team from 'src/assets/svgs/team.svg';
-import MainLayout from './components/MainLayout';
 
 function App() {
   return (
