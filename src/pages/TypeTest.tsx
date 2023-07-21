@@ -1,12 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import MainLayout from "../components/MainLayout";
-import { css } from "@emotion/react";
-import { Clock, Slash, UserCheck } from "src/assets/svgs";
+import { useState, useEffect, useRef } from 'react';
+import MainLayout from '../components/MainLayout';
+import { css } from '@emotion/react';
+import { Clock, Slash, UserCheck } from 'src/assets/svgs';
 
-import Quiz from "src/components/Quiz";
-import QnA from "src/config/quiz.json";
-import { flushSync } from "react-dom";
-import { useNavigate } from "react-router";
+import Quiz from 'src/components/Quiz';
+import QnA from 'src/config/quiz.json';
+import { flushSync } from 'react-dom';
+import { useNavigate } from 'react-router';
+import ProgressBar from 'src/components/ProgressBar';
 
 export const resultObj = {
   I: 0,
@@ -30,7 +31,6 @@ function TypeTest() {
   const navigate = useNavigate();
 
   const getResult = (mbti: Mbti) => {
-    console.log(page);
     prevResult.current.push(mbti);
     setResult((prev) => {
       const count = prev[mbti] + 1;
@@ -55,9 +55,8 @@ function TypeTest() {
     prevResult.current.pop();
   };
 
-
   interface KeyProp {
-    [index: string]: number
+    [index: string]: number;
   }
   const getMbtiResult = (key: KeyProp, key2: KeyProp) => {
     const keyString = Object.keys(key)[0];
@@ -85,7 +84,7 @@ function TypeTest() {
     color: #555;
     font-weight: 500;
   `;
-  const guideArr = ["clock", "user", "slash"];
+  const guideArr = ['clock', 'user', 'slash'];
   const guide = (text: string) => {
     const result = {
       clock: {
@@ -191,6 +190,7 @@ function TypeTest() {
           gap: 50px;
         `}
       >
+        {page !== 12 && <ProgressBar currentPage={page} />}
         <Quiz title={question} selectItems={answer} getResult={getResult} />
         {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
         {page !== 0 && (
