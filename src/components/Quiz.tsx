@@ -4,18 +4,24 @@ import { Mbti, resultObj } from "src/pages/TypeTest";
 interface Props {
   title: string;
   selectItems: { [index in keyof typeof resultObj]: string };
-  getResult: (mbti: Mbti) => void;
+  getResult: (mbti: string) => void;
 }
 const Quiz = ({ title, selectItems, getResult }: Props) => {
   const getItemsKeys = () => {
-    const resultArr: Mbti[] = [];
+    const resultArr: string[] = [];
     for (const key in selectItems) {
-      resultArr.push(key as Mbti);
+      resultArr.push(key);
     }
     return resultArr;
   };
   return (
-    <div css={css`display: flex; align-items: center; flex-direction: column`}>
+    <div
+      css={css`
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      `}
+    >
       <div css={TitleContainer}>{title}</div>
       <ul css={SelectBoxContainer}>
         {getItemsKeys().map((item, index) => {
@@ -51,7 +57,6 @@ const SelectBoxContainer = css`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  
 `;
 const SelectBoxItem = css`
   border: 1px solid #33a474;
