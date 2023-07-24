@@ -1,5 +1,5 @@
 import { css } from "@emotion/react";
-import { Mbti, resultObj } from "src/pages/TypeTest";
+import { resultObj } from "src/pages/TypeTest";
 
 interface Props {
   title: string;
