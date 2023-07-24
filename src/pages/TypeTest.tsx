@@ -1,15 +1,15 @@
-import { useState, useEffect, useRef } from 'react';
-import MainLayout from '../components/MainLayout';
-import { css } from '@emotion/react';
-import { Clock, Slash, UserCheck } from 'src/assets/svgs';
+import { useState, useEffect, useRef } from "react";
+import MainLayout from "../components/MainLayout";
+import { css } from "@emotion/react";
+import { Clock, Slash, UserCheck } from "src/assets/svgs";
 
-import Quiz from 'src/components/Quiz';
-import QnA from 'src/config/quiz.json';
-import { flushSync } from 'react-dom';
-import { useNavigate } from 'react-router';
-import ProgressBar from 'src/components/ProgressBar';
+import Quiz from "src/components/Quiz";
+import QnA from "src/config/quiz.json";
+import { flushSync } from "react-dom";
+import { useNavigate } from "react-router";
+import ProgressBar from "src/components/ProgressBar";
 
-export const resultObj = {
+export const resultObj: { [index: string]: number } = {
   I: 0,
   E: 0,
   N: 0,
@@ -84,7 +84,7 @@ function TypeTest() {
     color: #555;
     font-weight: 500;
   `;
-  const guideArr = ['clock', 'user', 'slash'];
+  const guideArr = ["clock", "user", "slash"];
   const guide = (text: string) => {
     const result = {
       clock: {
