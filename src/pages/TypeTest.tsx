@@ -20,7 +20,7 @@ export const resultObj: { [index: string]: number } = {
   J: 0,
 };
 
-export type Mbti = keyof typeof resultObj;
+export type Mbti = { [index: string]: number };
 
 function TypeTest() {
   const prevResult = useRef<string[]>([]);
