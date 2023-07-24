@@ -190,7 +190,7 @@ function TypeTest() {
           gap: 50px;
         `}
       >
-        {page !== 12 && <ProgressBar currentPage={page} />}
+        <ProgressBar currentPage={page} />
         <Quiz title={question} selectItems={answer} getResult={getResult} />
         {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
         {page !== 0 && (
