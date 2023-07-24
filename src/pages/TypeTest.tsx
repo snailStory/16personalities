@@ -20,7 +20,7 @@ export const resultObj: { [index: string]: number } = {
   J: 0,
 };
 
-export type Mbti = { [index: string]: number };
+// export type Mbti = [index: string];
 
 function TypeTest() {
   const prevResult = useRef<string[]>([]);
@@ -30,7 +30,7 @@ function TypeTest() {
   const { question, answer } = QnAObj[page] ?? {};
   const navigate = useNavigate();
 
-  const getResult = (mbti: Mbti) => {
+  const getResult = (mbti: string) => {
     prevResult.current.push(mbti);
     setResult((prev) => {
       const count = prev[mbti] + 1;
