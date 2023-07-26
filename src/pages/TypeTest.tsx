@@ -2,12 +2,29 @@ import { useState, useEffect, useRef } from "react";
 import MainLayout from "../components/MainLayout";
 import { css } from "@emotion/react";
 import { Clock, Slash, UserCheck } from "src/assets/svgs";
+import {
+  meeting,
+  city,
+  friend,
+  home2,
+  meeting2,
+  me,
+  wizard,
+  study,
+  load,
+  man,
+  moon,
+  waterfall,
+  book,
+  city2,
+} from "src/assets/images/quiz";
 
 import Quiz from "src/components/Quiz";
 import QnA from "src/config/quiz.json";
 import { flushSync } from "react-dom";
 import { useNavigate } from "react-router";
 import ProgressBar from "src/components/ProgressBar";
+import { LeftArrow } from "../assets/svgs";
 
 export const resultObj: { [index: string]: number } = {
   I: 0,
@@ -18,6 +35,23 @@ export const resultObj: { [index: string]: number } = {
   T: 0,
   P: 0,
   J: 0,
+};
+
+const imageObj: { [index: string]: string } = {
+  city,
+  meeting,
+  meeting2,
+  man,
+  load,
+  wizard,
+  moon,
+  waterfall,
+  friend,
+  study,
+  book,
+  me,
+  home2,
+  city2,
 };
 
 // export type Mbti = [index: string];
@@ -119,6 +153,7 @@ function TypeTest() {
         display: flex;
         flex-direction: column;
         gap: 180px;
+        margin-bottom: 60px;
       `}
     >
       <MainLayout>
@@ -138,16 +173,9 @@ function TypeTest() {
               text-align: center;
             `}
           >
-            무료 성격유형검사
+            마법세계 동물 유형 검사
           </h1>
-          <div
-            css={css`
-              font-weight: 500;
-              font-size: 20px;
-            `}
-          >
-            NERIS Type Explorer&reg;
-          </div>
+
           <div
             css={css`
               position: absolute;
@@ -187,15 +215,37 @@ function TypeTest() {
         css={css`
           display: flex;
           flex-direction: column;
-          gap: 50px;
+          gap: 24px;
+          padding: 0 110px;
         `}
       >
+        <span
+          css={css`
+            height: 50px;
+          `}
+        >
+          {page !== 0 && (
+            <button onClick={handleBackButtonClick}>
+              <LeftArrow />
+            </button>
+          )}
+        </span>
         <ProgressBar currentPage={page} />
-        <Quiz title={question} selectItems={answer} getResult={getResult} />
-        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
-        {page !== 0 && (
-          <button onClick={handleBackButtonClick}>뒤로가기</button>
+        <div
+          css={css`
+            text-align: center;
+          `}
+        >
+          <img
+            src={imageObj[Object.keys(imageObj)[page]]}
+            alt=""
+            height={"400px"}
+          />
+        </div>
+        {page !== 12 && (
+          <Quiz title={question} selectItems={answer} getResult={getResult} />
         )}
+        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
       </div>
     </div>
   );

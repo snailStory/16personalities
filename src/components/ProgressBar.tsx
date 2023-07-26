@@ -1,11 +1,11 @@
-import { css } from '@emotion/react';
+import { css } from "@emotion/react";
 
 type ProgressBarProps = {
   currentPage: number;
 };
 
 const ProgressBar = ({ currentPage }: ProgressBarProps) => {
-  const pagePercent = Math.floor(currentPage / 12 * 100)
+  const pagePercent = Math.floor((currentPage / 12) * 100);
   return (
     <div css={ProgressBarContainer}>
       <div css={ProgressBarFill(pagePercent)}></div>
@@ -14,9 +14,8 @@ const ProgressBar = ({ currentPage }: ProgressBarProps) => {
 };
 
 const ProgressBarContainer = css`
-  
-  width: 80%;
-  height: 30px;
+  width: 100%;
+  height: 20px;
   border-radius: 13px;
   background-color: #e6e6e6;
   margin: 0 auto;
