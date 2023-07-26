@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from "react-router";
-import { css } from "@emotion/react";
+import { useNavigate, useParams } from 'react-router';
+import { css } from '@emotion/react';
 import {
   ENTP,
   INFP,
@@ -17,7 +17,8 @@ import {
   ISTJ,
   ESTJ,
   ISTP,
-} from "src/assets/images/mbti";
+} from 'src/assets/images/mbti';
+import KakaoShareButton from 'src/components/KakaoShareButton';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -43,6 +44,15 @@ function TypeAnalysis() {
   const params = useParams();
   const navigate = useNavigate();
   const { mbti } = params;
+  const url = window.location.href;
+  const handleCopy = async (url: string) => {
+    try {
+      await navigator.clipboard.writeText(url);
+      alert('클립보드에 링크가 복사되었어요.');
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div
       css={css`
@@ -83,7 +93,7 @@ function TypeAnalysis() {
                       padding-top: 18px;
                     `}
                   >
-                    <img src={mbtis[item]} alt="mbti 이미지" width={"200px"} />
+                    <img src={mbtis[item]} alt="mbti 이미지" width={'200px'} />
                     <span>{item}</span>
                   </button>
                 </li>
@@ -109,11 +119,31 @@ function TypeAnalysis() {
               {mbti}
             </h3>
             <img src={mbtis[mbti]} alt="mbti별 사진" width="200px" />
+            <div css={ShareContainer}>
+              <h5
+                css={css`
+                  text-align: center;
+                  margin-bottom: 10px;
+                `}
+              >
+                공유하기
+              </h5>
+              <div css={css`display: flex;`}>
+                <button onClick={() => handleCopy(url)}><h2>🔗</h2></button>
+                <KakaoShareButton mbti={mbti} image={mbtis[mbti]} />
+              </div>
+            </div>
           </div>
         )}
       </div>
     </div>
   );
 }
+
+const ShareContainer = css`
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+`;
 
 export default TypeAnalysis;
