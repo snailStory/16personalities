@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
-import logoImage from "src/assets/images/snail.png";
+import logoImage from "/assets/images/snail.png";
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
