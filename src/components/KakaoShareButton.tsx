@@ -1,7 +1,7 @@
 /* eslint-disable*/
 
-import { useEffect } from 'react';
-import { css } from '@emotion/react';
+import { useEffect } from "react";
+import { css } from "@emotion/react";
 import {
   ENTP,
   INFP,
@@ -19,7 +19,7 @@ import {
   ISTJ,
   ESTJ,
   ISTP,
-} from 'src/assets/images/mbti';
+} from "src/assets/images/mbti";
 // @ts-ignore
 const { Kakao } = window;
 
@@ -62,18 +62,18 @@ const KakaoShareButton = ({ mbti, image }: KakaoShareButtonProps) => {
 
   const shareKakao = () => {
     Kakao.Share.sendDefault({
-      objectType: 'feed',
+      objectType: "feed",
       content: {
         title: mbti,
-        description: '마법 세계에서 나는 어떤 동물?',
-        imageUrl: `https://main--preeminent-custard-646e0d.netlify.app` + image,
+        description: "마법 세계에서 나는 어떤 동물?",
+        imageUrl: `https://main--dazzling-nougat-e4ab2e.netlify.app/` + image,
         link: {
           mobileWebUrl: realUrl,
         },
       },
       buttons: [
         {
-          title: '나도 테스트 하러가기',
+          title: "나도 테스트 하러가기",
           link: {
             mobileWebUrl: realUrl,
           },

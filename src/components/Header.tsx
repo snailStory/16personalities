@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router";
+import logoImage from "src/assets/images/snail.png";
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
@@ -28,7 +29,12 @@ const Header = () => {
     <MainHeader>
       <Link to="/" onClick={() => setSelectedTab(null)}>
         <IconSpan>
-          <img src="src/assets/images/snail.png" alt="" width={"50px"} />
+          <img
+            src={logoImage}
+            alt="logo image"
+            width={"50px"}
+            height={"50px"}
+          />
           <span
             css={css`
               font-size: 20px;
