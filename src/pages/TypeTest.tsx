@@ -117,16 +117,17 @@ function TypeTest() {
     text-align: center;
     color: #555;
     font-weight: 500;
+    font-size: calc(100vw / 100 + 7px)
   `;
   const guideArr = ["clock", "user", "slash"];
   const guide = (text: string) => {
     const result = {
       clock: {
-        icon: <Clock width="60px" height="60px" />,
+        icon: <Clock width="50%" height="40%" />,
         text: <div css={guideTextStyle}>총 검사 시간은 12분 내외입니다.</div>,
       },
       slash: {
-        icon: <Slash width="60px" height="60px" />,
+        icon: <Slash width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
             <div>가능하면 답변 시</div>
@@ -135,7 +136,7 @@ function TypeTest() {
         ),
       },
       user: {
-        icon: <UserCheck width="60px" height="60px" />,
+        icon: <UserCheck width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
             <div>질문이 마음에 들지 않더라도</div>
@@ -152,7 +153,7 @@ function TypeTest() {
       css={css`
         display: flex;
         flex-direction: column;
-        gap: 180px;
+        gap: calc(100vh / 7);
         margin-bottom: 60px;
       `}
     >
@@ -161,20 +162,20 @@ function TypeTest() {
           css={css`
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center;  
             justify-content: center;
-            gap: 20px;
             padding: 60px 20px;
             position: relative;
           `}
         >
-          <h1
+          <div
             css={css`
               text-align: center;
+              font-size: calc(100vw / 30 + 16px)
             `}
           >
             마법세계 동물 유형 검사
-          </h1>
+          </div>
 
           <div
             css={css`
@@ -184,6 +185,7 @@ function TypeTest() {
               justify-content: center;
               gap: 20px;
               z-index: 2;
+              width: calc(100vw - 100vw / 6);
             `}
           >
             {guideArr.map((item, index) => {
@@ -197,10 +199,11 @@ function TypeTest() {
                     align-items: center;
                     background-color: rgba(255, 255, 255, 0.5);
                     border-radius: 8px;
-                    width: 260px;
+                    width: calc(100vw / 4 + 10px);
                     height: 150px;
-                    padding: 18px 0;
+                    padding: 12px 10px;
                     gap: 10px;
+                    font-size: calc(100vw / 70)
                   `}
                 >
                   {guideItem?.icon}
@@ -215,8 +218,8 @@ function TypeTest() {
         css={css`
           display: flex;
           flex-direction: column;
-          gap: 24px;
-          padding: 0 110px;
+          gap: 20px;
+          padding: 0 10%;
         `}
       >
         <span
@@ -239,7 +242,8 @@ function TypeTest() {
           <img
             src={imageObj[Object.keys(imageObj)[page]]}
             alt=""
-            height={"400px"}
+            width='50%'
+            css={css`max-width: 300px`}
           />
         </div>
         {page !== 12 && (

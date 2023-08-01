@@ -14,8 +14,8 @@ const ProgressBar = ({ currentPage }: ProgressBarProps) => {
 };
 
 const ProgressBarContainer = css`
-  width: 100%;
-  height: 20px;
+  width: 80%;
+  height: calc(100vh / 40);
   border-radius: 13px;
   background-color: #e6e6e6;
   margin: 0 auto;
