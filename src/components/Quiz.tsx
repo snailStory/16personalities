@@ -20,6 +20,7 @@ const Quiz = ({ title, selectItems, getResult }: Props) => {
         display: flex;
         align-items: center;
         flex-direction: column;
+        gap: 20px;
       `}
     >
       <div css={TitleContainer}>{title}</div>
@@ -46,27 +47,25 @@ const Quiz = ({ title, selectItems, getResult }: Props) => {
 
 const TitleContainer = css`
   text-align: center;
-  width: 700px;
-  height: 100px;
-  font-size: 1.4em;
+  width: 70%;
+  height: 70px;
+  font-size: calc(100vw / 110 + 12px)
 `;
 const SelectBoxContainer = css`
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 10%;
 `;
 const SelectBoxItem = css`
   border: 1px solid #33a474;
   border-radius: 10px;
-  font-size: 1.1em;
-  padding: 24px 16px;
+  font-size: calc(100vw / 120 + 10px);
   margin: 10px;
   cursor: pointer;
-  width: 500px;
-  height: 100px;
+  width: 100%;
+  height: calc(100vh / 10);
   &:hover {
     background-color: #33a474;
     transition-timing-function: ease-in-out;

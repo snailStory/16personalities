@@ -1,7 +1,7 @@
 import { css } from "@emotion/react";
-import twitter from "src/assets/svgs/twitter.svg";
-import instagram from "src/assets/svgs/instagram.svg";
-import facebook from "src/assets/svgs/facebook.svg";
+import twitter from "/src/assets/svgs/twitter.svg";
+import instagram from "/src/assets/svgs/instagram.svg";
+import facebook from "/src/assets/svgs/facebook.svg";
 
 const Footer = () => {
   const footerNavMenus = [

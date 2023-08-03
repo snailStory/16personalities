@@ -5,9 +5,8 @@ const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <main
       css={css`
-        background-color: #33a474;
+        background-color: #4d377b;
         position: relative;
-        padding-bottom: 30px;
 
         &:after {
           position: absolute;
@@ -15,7 +14,7 @@ const MainLayout = ({ children }: PropsWithChildren) => {
           content: "";
           width: 100%;
           display: block;
-          background-color: #33a474;
+          background-color: #4d377b;
           clip-path: polygon(
             0 0,
             100% 0,

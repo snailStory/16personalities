@@ -9,7 +9,7 @@ function Routing() {
   return (
     <BrowserRouter>
       <Header />
-      <div style={{ marginTop: "60px", marginBottom: "60px" }}>
+      <div style={{ marginTop: "60px" }}>
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/typeTest" element={<TypeTest />} />

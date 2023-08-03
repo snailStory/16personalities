@@ -2,12 +2,29 @@ import { useState, useEffect, useRef } from "react";
 import MainLayout from "../components/MainLayout";
 import { css } from "@emotion/react";
 import { Clock, Slash, UserCheck } from "src/assets/svgs";
+import {
+  meeting,
+  city,
+  friend,
+  home2,
+  meeting2,
+  me,
+  wizard,
+  study,
+  load,
+  man,
+  moon,
+  waterfall,
+  book,
+  city2,
+} from "src/assets/images/quiz";
 
 import Quiz from "src/components/Quiz";
 import QnA from "src/config/quiz.json";
 import { flushSync } from "react-dom";
 import { useNavigate } from "react-router";
 import ProgressBar from "src/components/ProgressBar";
+import { LeftArrow } from "../assets/svgs";
 
 export const resultObj: { [index: string]: number } = {
   I: 0,
@@ -18,6 +35,23 @@ export const resultObj: { [index: string]: number } = {
   T: 0,
   P: 0,
   J: 0,
+};
+
+const imageObj: { [index: string]: string } = {
+  city,
+  meeting,
+  meeting2,
+  man,
+  load,
+  wizard,
+  moon,
+  waterfall,
+  friend,
+  study,
+  book,
+  me,
+  home2,
+  city2,
 };
 
 // export type Mbti = [index: string];
@@ -83,16 +117,17 @@ function TypeTest() {
     text-align: center;
     color: #555;
     font-weight: 500;
+    font-size: calc(100vw / 100 + 7px)
   `;
   const guideArr = ["clock", "user", "slash"];
   const guide = (text: string) => {
     const result = {
       clock: {
-        icon: <Clock width="60px" height="60px" />,
+        icon: <Clock width="50%" height="40%" />,
         text: <div css={guideTextStyle}>총 검사 시간은 12분 내외입니다.</div>,
       },
       slash: {
-        icon: <Slash width="60px" height="60px" />,
+        icon: <Slash width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
             <div>가능하면 답변 시</div>
@@ -101,7 +136,7 @@ function TypeTest() {
         ),
       },
       user: {
-        icon: <UserCheck width="60px" height="60px" />,
+        icon: <UserCheck width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
             <div>질문이 마음에 들지 않더라도</div>
@@ -118,7 +153,8 @@ function TypeTest() {
       css={css`
         display: flex;
         flex-direction: column;
-        gap: 180px;
+        gap: calc(100vh / 7);
+        margin-bottom: 60px;
       `}
     >
       <MainLayout>
@@ -126,28 +162,21 @@ function TypeTest() {
           css={css`
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: center;  
             justify-content: center;
-            gap: 20px;
             padding: 60px 20px;
             position: relative;
           `}
         >
-          <h1
-            css={css`
-              text-align: center;
-            `}
-          >
-            무료 성격유형검사
-          </h1>
           <div
             css={css`
-              font-weight: 500;
-              font-size: 20px;
+              text-align: center;
+              font-size: calc(100vw / 30 + 16px)
             `}
           >
-            NERIS Type Explorer&reg;
+            마법세계 동물 유형 검사
           </div>
+
           <div
             css={css`
               position: absolute;
@@ -156,6 +185,7 @@ function TypeTest() {
               justify-content: center;
               gap: 20px;
               z-index: 2;
+              width: calc(100vw - 100vw / 6);
             `}
           >
             {guideArr.map((item, index) => {
@@ -169,10 +199,11 @@ function TypeTest() {
                     align-items: center;
                     background-color: rgba(255, 255, 255, 0.5);
                     border-radius: 8px;
-                    width: 260px;
+                    width: calc(100vw / 4 + 10px);
                     height: 150px;
-                    padding: 18px 0;
+                    padding: 12px 10px;
                     gap: 10px;
+                    font-size: calc(100vw / 70)
                   `}
                 >
                   {guideItem?.icon}
@@ -187,15 +218,38 @@ function TypeTest() {
         css={css`
           display: flex;
           flex-direction: column;
-          gap: 50px;
+          gap: 20px;
+          padding: 0 10%;
         `}
       >
+        <span
+          css={css`
+            height: 50px;
+          `}
+        >
+          {page !== 0 && (
+            <button onClick={handleBackButtonClick}>
+              <LeftArrow />
+            </button>
+          )}
+        </span>
         <ProgressBar currentPage={page} />
-        <Quiz title={question} selectItems={answer} getResult={getResult} />
-        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
-        {page !== 0 && (
-          <button onClick={handleBackButtonClick}>뒤로가기</button>
+        <div
+          css={css`
+            text-align: center;
+          `}
+        >
+          <img
+            src={imageObj[Object.keys(imageObj)[page]]}
+            alt=""
+            width='50%'
+            css={css`max-width: 300px`}
+          />
+        </div>
+        {page !== 12 && (
+          <Quiz title={question} selectItems={answer} getResult={getResult} />
         )}
+        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
       </div>
     </div>
   );
