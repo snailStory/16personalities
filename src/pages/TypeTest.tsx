@@ -1,13 +1,30 @@
-import { useState, useEffect, useRef } from "react";
-import MainLayout from "../components/MainLayout";
-import { css } from "@emotion/react";
-import { Clock, Slash, UserCheck } from "src/assets/svgs";
+import { useState, useEffect, useRef } from 'react';
+import MainLayout from '../components/MainLayout';
+import { css } from '@emotion/react';
+import { Clock, Slash, UserCheck } from 'src/assets/svgs';
+import {
+  meeting,
+  city,
+  friend,
+  home2,
+  meeting2,
+  me,
+  wizard,
+  study,
+  load,
+  man,
+  moon,
+  waterfall,
+  book,
+  city2,
+} from 'src/assets/images/quiz';
 
-import Quiz from "src/components/Quiz";
-import QnA from "src/config/quiz.json";
-import { flushSync } from "react-dom";
-import { useNavigate } from "react-router";
-import ProgressBar from "src/components/ProgressBar";
+import Quiz from 'src/components/Quiz';
+import QnA from 'src/config/quiz.json';
+import { flushSync } from 'react-dom';
+import { useNavigate } from 'react-router';
+import ProgressBar from 'src/components/ProgressBar';
+import { LeftArrow } from '../assets/svgs';
 
 export const resultObj: { [index: string]: number } = {
   I: 0,
@@ -18,6 +35,23 @@ export const resultObj: { [index: string]: number } = {
   T: 0,
   P: 0,
   J: 0,
+};
+
+const imageObj: { [index: string]: string } = {
+  city,
+  meeting,
+  meeting2,
+  man,
+  load,
+  wizard,
+  moon,
+  waterfall,
+  friend,
+  study,
+  book,
+  me,
+  home2,
+  city2,
 };
 
 // export type Mbti = [index: string];
@@ -79,33 +113,26 @@ function TypeTest() {
     console.log(result);
   }, [result]);
 
-  const guideTextStyle = css`
-    text-align: center;
-    color: #555;
-    font-weight: 500;
-  `;
-  const guideArr = ["clock", "user", "slash"];
+  const guideArr = ['clock', 'user', 'slash'];
   const guide = (text: string) => {
     const result = {
       clock: {
-        icon: <Clock width="60px" height="60px" />,
+        icon: <Clock width="50%" height="40%" />,
         text: <div css={guideTextStyle}>총 검사 시간은 12분 내외입니다.</div>,
       },
       slash: {
-        icon: <Slash width="60px" height="60px" />,
+        icon: <Slash width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
-            <div>가능하면 답변 시</div>
-            <div>중립을 선택하지 마세요</div>
+            <div>가능하면 답변 시 중립을 선택하지 마세요</div>
           </div>
         ),
       },
       user: {
-        icon: <UserCheck width="60px" height="60px" />,
+        icon: <UserCheck width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
-            <div>질문이 마음에 들지 않더라도</div>
-            <div>정직하게 답변하세요.</div>
+            <div>질문이 마음에 들지 않더라도 정직하게 답변하세요.</div>
           </div>
         ),
       },
@@ -118,7 +145,9 @@ function TypeTest() {
       css={css`
         display: flex;
         flex-direction: column;
-        gap: 180px;
+        justify-content: center;
+        gap: calc(100vh / 7);
+        margin-bottom: 60px;
       `}
     >
       <MainLayout>
@@ -128,53 +157,23 @@ function TypeTest() {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
             padding: 60px 20px;
             position: relative;
           `}
         >
-          <h1
+          <div
             css={css`
               text-align: center;
             `}
           >
-            무료 성격유형검사
-          </h1>
-          <div
-            css={css`
-              font-weight: 500;
-              font-size: 20px;
-            `}
-          >
-            NERIS Type Explorer&reg;
+            <h1>마법세계 동물 유형 검사</h1>
           </div>
-          <div
-            css={css`
-              position: absolute;
-              bottom: -130px;
-              display: flex;
-              justify-content: center;
-              gap: 20px;
-              z-index: 2;
-            `}
-          >
+
+          <div css={GuideContainer}>
             {guideArr.map((item, index) => {
               const guideItem = guide(item);
               return (
-                <div
-                  key={index}
-                  css={css`
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    background-color: rgba(255, 255, 255, 0.5);
-                    border-radius: 8px;
-                    width: 260px;
-                    height: 150px;
-                    padding: 18px 0;
-                    gap: 10px;
-                  `}
-                >
+                <div key={index} css={GuideItem}>
                   {guideItem?.icon}
                   {guideItem?.text}
                 </div>
@@ -187,18 +186,94 @@ function TypeTest() {
         css={css`
           display: flex;
           flex-direction: column;
-          gap: 50px;
+          gap: 20px;
+          padding: 0 10%;
+          max-width: 1024px;
+          margin: 0 auto;
         `}
       >
-        <ProgressBar currentPage={page} />
-        <Quiz title={question} selectItems={answer} getResult={getResult} />
-        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
-        {page !== 0 && (
-          <button onClick={handleBackButtonClick}>뒤로가기</button>
+        <div
+          css={css`
+            margin-top: 80px;
+          `}
+        >
+          {page !== 0 && (
+            <button onClick={handleBackButtonClick}>
+              <LeftArrow />
+            </button>
+          )}
+          <ProgressBar currentPage={page} />
+        </div>
+        <div
+          css={css`
+            text-align: center;
+          `}
+        >
+          <img
+            src={imageObj[Object.keys(imageObj)[page]]}
+            alt=""
+            width="50%"
+            css={css`
+              max-width: 300px;
+            `}
+          />
+        </div>
+        {page !== 12 && (
+          <Quiz title={question} selectItems={answer} getResult={getResult} />
         )}
+        {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
       </div>
     </div>
   );
 }
+
+const GuideContainer = css`
+  position: absolute;
+  bottom: -130px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  z-index: 2;
+  width: calc(100vw - 100vw / 6);
+  max-width: 1024px;
+  margin: 0 auto;
+  @media (max-width: 768px) {
+    position: absolute;
+    bottom: -150px;
+    display: flex;
+    flex-direction: column;
+  }
+`;
+
+const GuideItem = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 8px;
+  width: calc(100vw / 4 + 10px);
+  height: 150px;
+  padding: 12px 10px;
+  gap: 10px;
+  font-size: calc(100vw / 70);
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 50px;
+    padding: 3px 5px;
+    gap: 0;
+    svg {
+      width: 10%;
+    }
+  }
+`;
+const guideTextStyle = css`
+  text-align: center;
+  color: #555;
+  font-weight: 500;
+  max-height: 78px;
+  font-size: calc(100vw / 100 + 7px);
+`;
 
 export default TypeTest;

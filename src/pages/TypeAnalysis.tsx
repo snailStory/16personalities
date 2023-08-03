@@ -72,29 +72,13 @@ function TypeAnalysis() {
         `}
       >
         {!mbti && (
-          <ul
-            css={css`
-              display: grid;
-              grid-template-columns: repeat(4, 1fr);
-              grid-template-rows: repeat(3, 1fr);
-              gap: 100px;
-            `}
-          >
+          <ul css={CardsContainer}>
             {Object.keys(mbtis).map((item, index) => {
               return (
-                <li key={index}>
-                  <button
-                    onClick={() => navigate(`/typeAnalysis/${item}`)}
-                    css={css`
-                      display: flex;
-                      flex-direction: column;
-                      align-items: center;
-                      gap: 10px;
-                      padding-top: 18px;
-                    `}
-                  >
+                <li key={index} css={Card}>
+                  <button onClick={() => navigate(`/typeAnalysis/${item}`)}>
                     <img src={mbtis[item]} alt="mbti 이미지" width={'200px'} />
-                    <span>{item}</span>
+                    <p>{item}</p>
                   </button>
                 </li>
               );
@@ -128,8 +112,14 @@ function TypeAnalysis() {
               >
                 공유하기
               </h5>
-              <div css={css`display: flex;`}>
-                <button onClick={() => handleCopy(url)}><h2>🔗</h2></button>
+              <div
+                css={css`
+                  display: flex;
+                `}
+              >
+                <button onClick={() => handleCopy(url)}>
+                  <h2>🔗</h2>
+                </button>
                 <KakaoShareButton mbti={mbti} image={mbtis[mbti]} />
               </div>
             </div>
@@ -139,7 +129,23 @@ function TypeAnalysis() {
     </div>
   );
 }
+const CardsContainer = css`
+  display: flex;
+  margin: 0 auto;
+  max-width: 1024px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+`;
 
+const Card = css`
+  flex: auto;
+  min-width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+`;
 const ShareContainer = css`
   margin-top: 100px;
   display: flex;

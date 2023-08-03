@@ -5,7 +5,7 @@ type ProgressBarProps = {
 };
 
 const ProgressBar = ({ currentPage }: ProgressBarProps) => {
-  const pagePercent = Math.floor(currentPage / 12 * 100)
+  const pagePercent = Math.floor((currentPage / 12) * 100);
   return (
     <div css={ProgressBarContainer}>
       <div css={ProgressBarFill(pagePercent)}></div>
@@ -14,12 +14,11 @@ const ProgressBar = ({ currentPage }: ProgressBarProps) => {
 };
 
 const ProgressBarContainer = css`
-  
   width: 80%;
-  height: 30px;
+  height: calc(100vh / 50);
   border-radius: 13px;
   background-color: #e6e6e6;
-  margin: 0 auto;
+  margin: 20px auto;
 `;
 
 const ProgressBarFill = (pagePercent: number) => css`
