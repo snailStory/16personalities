@@ -1,7 +1,7 @@
-import { useState, useEffect, useRef } from 'react';
-import MainLayout from '../components/MainLayout';
-import { css } from '@emotion/react';
-import { Clock, Slash, UserCheck } from 'src/assets/svgs';
+import { useState, useEffect, useRef } from "react";
+import MainLayout from "../components/MainLayout";
+import { css } from "@emotion/react";
+import { Clock, Slash, UserCheck } from "src/assets/svgs";
 import {
   meeting,
   city,
@@ -17,14 +17,14 @@ import {
   waterfall,
   book,
   city2,
-} from 'src/assets/images/quiz';
+} from "src/assets/images/quiz";
 
-import Quiz from 'src/components/Quiz';
-import QnA from 'src/config/quiz.json';
-import { flushSync } from 'react-dom';
-import { useNavigate } from 'react-router';
-import ProgressBar from 'src/components/ProgressBar';
-import { LeftArrow } from '../assets/svgs';
+import Quiz from "src/components/Quiz";
+import QnA from "src/config/quiz.json";
+import { flushSync } from "react-dom";
+import { useNavigate } from "react-router";
+import ProgressBar from "src/components/ProgressBar";
+import { LeftArrow } from "../assets/svgs";
 
 export const resultObj: { [index: string]: number } = {
   I: 0,
@@ -113,7 +113,7 @@ function TypeTest() {
     console.log(result);
   }, [result]);
 
-  const guideArr = ['clock', 'user', 'slash'];
+  const guideArr = ["clock", "user", "slash"];
   const guide = (text: string) => {
     const result = {
       clock: {
@@ -146,7 +146,7 @@ function TypeTest() {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: calc(100vh / 7);
+        gap: calc(100vh / 8);
         margin-bottom: 60px;
       `}
     >
@@ -188,8 +188,6 @@ function TypeTest() {
           flex-direction: column;
           gap: 20px;
           padding: 0 10%;
-          max-width: 1024px;
-          margin: 0 auto;
         `}
       >
         <div
@@ -202,7 +200,14 @@ function TypeTest() {
               <LeftArrow />
             </button>
           )}
-          <ProgressBar currentPage={page} />
+          <div
+            css={css`
+              max-width: 1260px;
+              margin: 0 auto;
+            `}
+          >
+            <ProgressBar currentPage={page} />
+          </div>
         </div>
         <div
           css={css`
@@ -230,13 +235,14 @@ function TypeTest() {
 const GuideContainer = css`
   position: absolute;
   bottom: -130px;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   justify-content: center;
   gap: 20px;
   z-index: 2;
   width: calc(100vw - 100vw / 6);
   max-width: 1024px;
-  margin: 0 auto;
   @media (max-width: 768px) {
     position: absolute;
     bottom: -150px;

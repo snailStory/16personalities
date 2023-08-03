@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from 'react-router';
-import { css } from '@emotion/react';
+import { useNavigate, useParams } from "react-router";
+import { css } from "@emotion/react";
 import {
   ENTP,
   INFP,
@@ -17,8 +17,8 @@ import {
   ISTJ,
   ESTJ,
   ISTP,
-} from 'src/assets/images/mbti';
-import KakaoShareButton from 'src/components/KakaoShareButton';
+} from "src/assets/images/mbti";
+import KakaoShareButton from "src/components/KakaoShareButton";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -48,7 +48,7 @@ function TypeAnalysis() {
   const handleCopy = async (url: string) => {
     try {
       await navigator.clipboard.writeText(url);
-      alert('클립보드에 링크가 복사되었어요.');
+      alert("클립보드에 링크가 복사되었어요.");
     } catch (err) {
       console.log(err);
     }
@@ -68,7 +68,7 @@ function TypeAnalysis() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 80px;
+          padding: 80px 0;
         `}
       >
         {!mbti && (
@@ -77,7 +77,7 @@ function TypeAnalysis() {
               return (
                 <li key={index} css={Card}>
                   <button onClick={() => navigate(`/typeAnalysis/${item}`)}>
-                    <img src={mbtis[item]} alt="mbti 이미지" width={'200px'} />
+                    <img src={mbtis[item]} alt="mbti 이미지" width={"200px"} />
                     <p>{item}</p>
                   </button>
                 </li>

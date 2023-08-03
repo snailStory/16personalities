@@ -1,17 +1,17 @@
-import { useState } from 'react';
-import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
-import logoImage from '/snail.png';
+import { useState } from "react";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { Link } from "react-router-dom";
+import { useLocation } from "react-router";
+import logoImage from "/snail.png";
 
 const Header = () => {
   const [selectedTab, setSelectedTab] = useState<number | null>(null);
   const location = useLocation();
   const { pathname } = location;
   const navList = [
-    { name: '성격 유형 검사', path: '/typeTest' },
-    { name: '유형별 성격', path: '/typeAnalysis' },
+    { name: "성격 유형 검사", path: "/typeTest" },
+    { name: "유형별 성격", path: "/typeAnalysis" },
   ];
 
   const ItemHoverStyle = css`
@@ -28,8 +28,8 @@ const Header = () => {
             <img
               src={logoImage}
               alt="logo image"
-              width={'50px'}
-              height={'50px'}
+              width={"50px"}
+              height={"50px"}
             />
             <LogoTitle>Snail Story</LogoTitle>
           </IconSpan>
@@ -61,6 +61,7 @@ const MainHeader = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
+  left: 0;
   background-color: #030303;
   z-index: 9999;
 `;
@@ -72,9 +73,7 @@ const MainHeaderItems = styled.div`
   padding: 0 10px;
   margin: 0 auto;
   background-color: #030303;
-  @media (min-width: 1024px) {
-    width: 1024px;
-  }
+  width: 100%;
 `;
 const IconSpan = styled.span`
   display: flex;

@@ -1,5 +1,5 @@
-import { css } from '@emotion/react';
-import { resultObj } from 'src/pages/TypeTest';
+import { css } from "@emotion/react";
+import { resultObj } from "src/pages/TypeTest";
 
 interface Props {
   title: string;
@@ -21,12 +21,13 @@ const Quiz = ({ title, selectItems, getResult }: Props) => {
         align-items: center;
         flex-direction: column;
         gap: 20px;
+        width: 100%;
       `}
     >
-      <div css={TitleContainer}>{title.split('. ').join('.\n')}</div>
+      <div css={TitleContainer}>{title.split(". ").join(".\n")}</div>
       <ul css={SelectBoxContainer}>
         {getItemsKeys().map((item, index) => {
-          const text = selectItems[item].split('/');
+          const text = selectItems[item].split("/");
           return (
             <button
               key={index}
@@ -67,7 +68,7 @@ const SelectBoxItem = css`
   margin: 1rem;
   cursor: pointer;
   width: 100%;
-  height: calc(100vh / 5);
+  height: 60px;
   &:hover {
     background-color: #4d377b;
     border: none;
@@ -76,8 +77,9 @@ const SelectBoxItem = css`
     transition-delay: 0.12s;
     transform: scale(1.05);
   }
+
   @media (min-width: 1024px) {
-    height: calc(100vh / 7);
+    height: 80px;
   }
 `;
 export default Quiz;
