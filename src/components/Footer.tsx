@@ -30,7 +30,7 @@ const Footer = () => {
         padding: 80px 15px 40px 15px;
       `}
     >
-      <div>&copy;2023 NERIS Analytics Limited</div>
+      <div>&copy;2023 Snail Story</div>
       <nav>
         <ul
           css={css`
@@ -82,12 +82,9 @@ const Footer = () => {
           text-align: center;
         `}
       >
-        Disclaimer: All non-English versions of the website contain automated
-        translations or translations submitted by our users. They are not
-        binding in any way, are not guaranteed to be accurate, and have no legal
-        effect. The official text is the English version of the website. Please
-        consider reporting inaccuracies to support@16personalities.com or join
-        our translation project!
+        Please
+        consider reporting inaccuracies to support@snailsotry.com or join
+        our project!
       </div>
     </div>
   );

@@ -85,7 +85,7 @@ const IconSpan = styled.span`
 const LogoTitle = styled.span`
   font-size: 1.5rem;
   font-weight: 600;
-  @media (max-width: 320px) {
+  @media (max-width: 768px) {
     display: none;
   }
 `;
@@ -98,7 +98,7 @@ const ListItem = styled.li`
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.5rem;
   white-space: pre-line;
   border-top: solid 2px transparent;
   height: 60px;

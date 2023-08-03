@@ -118,13 +118,13 @@ function TypeTest() {
     const result = {
       clock: {
         icon: <Clock width="50%" height="40%" />,
-        text: <div css={guideTextStyle}>총 검사 시간은 12분 내외입니다.</div>,
+        text: <div css={guideTextStyle}>총 검사 시간은 3분 내외입니다.</div>,
       },
       slash: {
         icon: <Slash width="50%" height="40%" />,
         text: (
           <div css={guideTextStyle}>
-            <div>가능하면 답변 시 중립을 선택하지 마세요</div>
+            <div>가능하면 상상해서 선택하세요.</div>
           </div>
         ),
       },
@@ -186,6 +186,7 @@ function TypeTest() {
         css={css`
           display: flex;
           flex-direction: column;
+          align-items: center;
           gap: 20px;
           padding: 0 10%;
         `}
@@ -193,6 +194,8 @@ function TypeTest() {
         <div
           css={css`
             margin-top: 80px;
+            max-width: 1000px;
+            width: 100%;
           `}
         >
           {page !== 0 && (
@@ -202,7 +205,7 @@ function TypeTest() {
           )}
           <div
             css={css`
-              max-width: 1260px;
+              /* max-width: 1000px; */
               margin: 0 auto;
             `}
           >
@@ -279,7 +282,8 @@ const guideTextStyle = css`
   color: #555;
   font-weight: 500;
   max-height: 78px;
-  font-size: calc(100vw / 100 + 7px);
+  font-size: 1.3rem;
+  /* font-size: calc(100vw / 100 + 7px); */
 `;
 
 export default TypeTest;

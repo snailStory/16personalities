@@ -50,7 +50,8 @@ const TitleContainer = css`
   text-align: center;
   width: 70%;
   height: 70px;
-  font-size: calc(100vw / 150 + 1rem);
+  /* font-size: calc(100vw / 150 + 1rem); */
+  font-size: 1.5rem;
   white-space: pre-wrap;
 `;
 const SelectBoxContainer = css`
@@ -64,7 +65,9 @@ const SelectBoxContainer = css`
 const SelectBoxItem = css`
   border: 1px solid #646cff;
   border-radius: 10px;
-  font-size: calc(100vw / 180 + 1rem);
+  /* font-size: calc(100vw / 180 + 1rem); */
+  padding: 5px;
+  font-size: 1.2rem;
   margin: 1rem;
   cursor: pointer;
   width: 100%;
