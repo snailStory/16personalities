@@ -38,10 +38,12 @@ function App() {
       >
         <div
           css={css`
-            padding: 30px 70px;
+            padding: 30px 40px;
             gap: 20px;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            white-space: nowrap;
           `}
         >
           <h1>마법 세계에서</h1>
@@ -57,6 +59,7 @@ function App() {
             <button
               css={css`
                 width: 60%;
+                max-width: 170px;
               `}
               onClick={() => navigate("/typeTest")}
             >
