@@ -9,8 +9,9 @@ const MainLayout = ({ children }: PropsWithChildren) => {
         position: relative;
 
         &:after {
-          position: absolute;
+          position: relative;
           left: 0;
+          top: 30px;
           content: "";
           width: 100%;
           display: block;

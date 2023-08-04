@@ -63,6 +63,7 @@ function TypeTest() {
   const [page, setPage] = useState(0);
   const { question, answer } = QnAObj[page] ?? {};
   const navigate = useNavigate();
+  const quizRef = useRef<HTMLElement | null>(null);
 
   const getResult = (mbti: string) => {
     prevResult.current.push(mbti);
@@ -158,7 +159,7 @@ function TypeTest() {
             align-items: center;
             justify-content: center;
             padding: 60px 20px;
-            position: relative;
+            position: relative;d
           `}
         >
           <div
@@ -198,17 +199,25 @@ function TypeTest() {
             width: 100%;
           `}
         >
-          {page !== 0 && (
-            <button onClick={handleBackButtonClick}>
-              <LeftArrow />
-            </button>
-          )}
           <div
             css={css`
               /* max-width: 1000px; */
               margin: 0 auto;
+              position: relative;
             `}
           >
+            {page !== 0 && (
+              <button
+                onClick={handleBackButtonClick}
+                css={css`
+                  top: -60px;
+                  left: 8%;
+                  position: absolute;
+                `}
+              >
+                <LeftArrow />
+              </button>
+            )}
             <ProgressBar currentPage={page} />
           </div>
         </div>
@@ -222,12 +231,18 @@ function TypeTest() {
             alt=""
             width="50%"
             css={css`
-              max-width: 300px;
+              max-width: 350px;
+              max-height: 430px;
             `}
           />
         </div>
         {page !== 12 && (
-          <Quiz title={question} selectItems={answer} getResult={getResult} />
+          <Quiz
+            title={question}
+            selectItems={answer}
+            getResult={getResult}
+            ref={quizRef}
+          />
         )}
         {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
       </div>
