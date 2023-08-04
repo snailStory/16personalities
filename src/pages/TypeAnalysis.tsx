@@ -19,27 +19,29 @@ import {
   ISTP,
 } from "src/assets/images/mbti";
 import KakaoShareButton from "src/components/KakaoShareButton";
+import result from "src/config/result.json";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const mbtis: { [index: string]: string } = {
-  ENTP,
-  INFP,
-  ENFP,
-  INTP,
-  ESTP,
-  ENTJ,
-  INTJ,
-  ENFJ,
-  INFJ,
-  ISFP,
-  ISFJ,
-  ESFJ,
-  ISTJ,
-  ESTJ,
-  ESFP,
-  ISTP,
+const mbtis: { [index: string]: { image: string; result: string } } = {
+  ENTP: { image: ENTP, result: result.ENTP },
+  INFP: { image: INFP, result: result.INFP },
+  ENFP: { image: ENFP, result: result.ENFP },
+  INTP: { image: INTP, result: result.INTP },
+  ESTP: { image: ESTP, result: result.ESTP },
+  ENTJ: { image: ENTJ, result: result.ENTJ },
+  INTJ: { image: INTJ, result: result.INTJ },
+  ENFJ: { image: ENFJ, result: result.ENFJ },
+  INFJ: { image: INFJ, result: result.INFJ },
+  ISFP: { image: ISFP, result: result.ISFP },
+  ISFJ: { image: ISFJ, result: result.ISFJ },
+  ESFJ: { image: ESFJ, result: result.ESFJ },
+  ISTJ: { image: ISTJ, result: result.ISTJ },
+  ESTJ: { image: ESTJ, result: result.ESTJ },
+  ESFP: { image: ESFP, result: result.ESFP },
+  ISTP: { image: ISTP, result: result.ISTP },
 };
+
 function TypeAnalysis() {
   const params = useParams();
   const navigate = useNavigate();
@@ -77,7 +79,11 @@ function TypeAnalysis() {
               return (
                 <li key={index} css={Card}>
                   <button onClick={() => navigate(`/typeAnalysis/${item}`)}>
-                    <img src={mbtis[item]} alt="mbti 이미지" width={"200px"} />
+                    <img
+                      src={mbtis[item].image}
+                      alt="mbti 이미지"
+                      width={"200px"}
+                    />
                     <p>{item}</p>
                   </button>
                 </li>
@@ -102,7 +108,14 @@ function TypeAnalysis() {
             >
               {mbti}
             </h3>
-            <img src={mbtis[mbti]} alt="mbti별 사진" width="200px" />
+            <img src={mbtis[mbti].image} alt="mbti별 사진" width="200px" />
+            <div
+              css={css`
+                color: #f9f9f9;
+              `}
+            >
+              {mbtis[mbti].result}
+            </div>
             <div css={ShareContainer}>
               <h5
                 css={css`
@@ -120,7 +133,7 @@ function TypeAnalysis() {
                 <button onClick={() => handleCopy(url)}>
                   <h2>🔗</h2>
                 </button>
-                <KakaoShareButton mbti={mbti} image={mbtis[mbti]} />
+                <KakaoShareButton mbti={mbti} image={mbtis[mbti].image} />
               </div>
             </div>
           </div>
