@@ -63,7 +63,6 @@ function TypeTest() {
   const [page, setPage] = useState(0);
   const { question, answer } = QnAObj[page] ?? {};
   const navigate = useNavigate();
-  const quizRef = useRef<HTMLElement | null>(null);
 
   const getResult = (mbti: string) => {
     prevResult.current.push(mbti);
@@ -159,7 +158,7 @@ function TypeTest() {
             align-items: center;
             justify-content: center;
             padding: 60px 20px;
-            position: relative;d
+            position: relative;
           `}
         >
           <div
@@ -237,12 +236,7 @@ function TypeTest() {
           />
         </div>
         {page !== 12 && (
-          <Quiz
-            title={question}
-            selectItems={answer}
-            getResult={getResult}
-            ref={quizRef}
-          />
+          <Quiz title={question} selectItems={answer} getResult={getResult} />
         )}
         {page === 12 && <button onClick={handleGetMbti}>결과보기</button>}
       </div>
