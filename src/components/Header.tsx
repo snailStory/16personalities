@@ -6,7 +6,7 @@ import { useLocation } from "react-router";
 import logoImage from "/snail.png";
 
 const Header = () => {
-  const [selectedTab, setSelectedTab] = useState<number | null>(null);
+  const [, setSelectedTab] = useState<number | null>(null);
   const location = useLocation();
   const { pathname } = location;
   const navList = [
