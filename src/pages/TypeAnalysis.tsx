@@ -112,6 +112,8 @@ function TypeAnalysis() {
             <div
               css={css`
                 color: #f9f9f9;
+                width: 30%;
+                font-size: 16px;
               `}
             >
               {mbtis[mbti].result}
