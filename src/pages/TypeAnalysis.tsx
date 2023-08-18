@@ -112,7 +112,7 @@ function TypeAnalysis() {
             <div
               css={css`
                 color: #f9f9f9;
-                width: 30%;
+                width: 70%;
                 font-size: 16px;
               `}
             >
@@ -162,7 +162,7 @@ const Card = css`
   margin-bottom: 50px;
 `;
 const ShareContainer = css`
-  margin-top: 100px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
 `;
