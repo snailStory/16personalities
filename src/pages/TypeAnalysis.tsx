@@ -20,6 +20,7 @@ import {
 } from "src/assets/images/mbti";
 import KakaoShareButton from "src/components/KakaoShareButton";
 import result from "src/config/result.json";
+import SEO from "../components/Helmet";
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -65,6 +66,7 @@ function TypeAnalysis() {
       `}
     >
       {!mbti && <h1>성격유형</h1>}
+      <SEO title="성격 유형" />
       <div
         css={css`
           display: flex;

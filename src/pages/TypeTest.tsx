@@ -25,6 +25,7 @@ import { flushSync } from "react-dom";
 import { useNavigate } from "react-router";
 import ProgressBar from "src/components/ProgressBar";
 import { LeftArrow } from "../assets/svgs";
+import SEO from "../components/Helmet";
 
 export const resultObj: { [index: string]: number } = {
   I: 0,
@@ -150,6 +151,7 @@ function TypeTest() {
         margin-bottom: 60px;
       `}
     >
+      <SEO title="성격 유형 검사" />
       <MainLayout>
         <div
           css={css`
