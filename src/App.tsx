@@ -3,15 +3,14 @@ import { RecoilRoot } from "recoil";
 
 import { css } from "@emotion/react";
 import team from "src/assets/images/cat.png";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
-import { HelmetProvider } from "react-helmet-async";
 import SEO from "./components/Helmet";
 
 function App() {
   const navigate = useNavigate();
-  const path = useLocation().path;
-  console.log(path);
+
+
 
   return (
     <RecoilRoot>
